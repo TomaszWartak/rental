@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/rental?useSSL=false&amp;serverTimezone=UTC
+    username: root
+    password: kacper@90
+  jpa:
+    generate-ddl: true
+    show-sql: true
