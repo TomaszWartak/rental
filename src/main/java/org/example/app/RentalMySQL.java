@@ -1,11 +1,11 @@
 package org.example.app;
 
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class RentalMySQL {
     public static void main(String[] args) {
-        EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("rentalmysqlPU");
-        emFactory.close();
+        SpringApplication.run(RentalMySQL.class, args);
     }
 }
