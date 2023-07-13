@@ -1,9 +1,9 @@
-package org.example.dao;
+package org.example.rentalmysql;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import org.example.entities.Customer;
+import org.example.rentalmysql.entities.Customer;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

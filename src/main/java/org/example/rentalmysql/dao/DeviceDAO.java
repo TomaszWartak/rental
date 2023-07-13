@@ -1,9 +1,9 @@
-package org.example.dao;
+package org.example.rentalmysql.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import org.example.entities.Device;
+import org.example.rentalmysql.entities.Device;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -15,7 +15,7 @@ public class DeviceDAO {
     private EntityManager entityManager;
 
     @Transactional
-    public Optional<Device> save( Device device ) {
+    public Optional<Device> save(Device device ) {
         entityManager.persist( device );
         return Optional.of( device );
     }

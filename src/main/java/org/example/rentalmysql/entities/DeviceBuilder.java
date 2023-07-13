@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.rentalmysql.entities;
 
 public class DeviceBuilder {
     private Long id;

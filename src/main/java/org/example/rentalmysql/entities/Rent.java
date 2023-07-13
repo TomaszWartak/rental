@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.rentalmysql.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

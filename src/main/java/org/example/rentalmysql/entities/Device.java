@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.rentalmysql.entities;
 
 import jakarta.persistence.*;
 
@@ -18,7 +18,7 @@ public class Device {
     @Column(length = 100)
     private String description;
 
-    private int availability;
+    private int availability; // ile jest dostępnych
 
     private double price;
 
@@ -88,6 +88,10 @@ public class Device {
 
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
+    }
+
+    public void addCustomer( Customer customer ) {
+        customers.add( customer );
     }
 
     @Override

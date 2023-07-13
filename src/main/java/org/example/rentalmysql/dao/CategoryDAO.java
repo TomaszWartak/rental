@@ -1,9 +1,9 @@
-package org.example.dao;
+package org.example.rentalmysql.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
-import org.example.entities.Category;
+import org.example.rentalmysql.entities.Category;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -15,7 +15,7 @@ public class CategoryDAO {
     private EntityManager entityManager;
 
     @Transactional
-    public Optional<Category> save( Category category ) {
+    public Optional<Category> save(Category category ) {
         entityManager.persist( category );
         return Optional.of( category );
     }

@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example.rentalmysql.entities;
 
 public class CategoryBuilder {
     private Long id;
