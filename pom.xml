@@ -5,32 +5,87 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>rental</artifactId>
+    <artifactId>rentalmysql</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <name>rentalmysql</name>
+    <description>rentalmysql</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.5</version>
+        <version>3.1.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
+<!--        <activeProfile>mysql</activeProfile>-->
+<!--        <activeProfile>h2</activeProfile>-->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <mysql.connector.version>8.0.32</mysql.connector.version>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>h2</id>
+<!--            <activation>-->
+<!--                <property>-->
+<!--                    <name>activeProfile</name>-->
+<!--                    <value>h2</value>-->
+<!--                </property>-->
+<!--            </activation>-->
+            <properties>
+                <h2.version>2.1.214</h2.version>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <version>${h2.version}</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>mysql</id>
+<!--            <activation>-->
+<!--                <property>-->
+<!--                    <name>activeProfile</name>-->
+<!--                    <value>mysql</value>-->
+<!--                </property>-->
+<!--            </activation>-->
+            <properties>
+                <mysql.connector.version>8.0.33</mysql.connector.version>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+                    <groupId>com.mysql</groupId>
+                    <artifactId>mysql-connector-j</artifactId>
+                    <version>${mysql.connector.version}</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>${mysql.connector.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,26 +93,29 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.2</version>
+            <version>5.9.3</version>
             <scope>test</scope>
         </dependency>
         <dependency>
+            <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.16.1</version>
+            <version>3.24.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.0.5</version>
             </plugin>
         </plugins>
     </build>
+
 </project>

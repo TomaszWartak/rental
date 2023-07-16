@@ -8,9 +8,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class RentalMySQL {
+
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(RentalMySQL.class, args);
-        Category category = new CategoryBuilder()
+/*        Category category = new CategoryBuilder()
                 .withName("wiertarki")
                 .withDescription("wiertarki - opis")
                 .build();
@@ -32,7 +33,7 @@ public class RentalMySQL {
         category = categoryDAO.save( category ).orElseThrow();
         device.setCategory( category );
         DeviceDAO deviceDao = ctx.getBean(DeviceDAO.class);
-        device = deviceDao.save( device ).orElseThrow();
+        device = deviceDao.save( device ).orElseThrow();*/
 
     }
 }

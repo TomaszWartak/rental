@@ -1,15 +1,13 @@
 package org.example.rentalmysql.services;
 
 import org.assertj.core.api.Assertions;
-import org.example.rentalmysql.CustomerDAO;
-import org.example.rentalmysql.RentalMySQL;
+import org.example.rentalmysql.dao.CustomerDAO;
 import org.example.rentalmysql.entities.*;
 import org.example.rentalmysql.dao.CategoryDAO;
 import org.example.rentalmysql.dao.DeviceDAO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 
 //@SpringJUnitConfig
 //@ExtendWith(SpringExtension.class)

@@ -1,4 +1,4 @@
-package org.example.rentalmysql;
+package org.example.rentalmysql.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
