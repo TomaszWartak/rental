@@ -11,7 +11,7 @@ public class RentalMySQL {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(RentalMySQL.class, args);
-/*        Category category = new CategoryBuilder()
+        Category category = new CategoryBuilder()
                 .withName("wiertarki")
                 .withDescription("wiertarki - opis")
                 .build();
@@ -28,12 +28,11 @@ public class RentalMySQL {
                 .withIdCardNumber("DEF123456")
                 .build();
         CustomerDAO customerDao = ctx.getBean(CustomerDAO.class);
-        customer = customerDao.save( customer ).orElseThrow();
+        customerDao.save( customer );
         CategoryDAO categoryDAO = ctx.getBean(CategoryDAO.class);
-        category = categoryDAO.save( category ).orElseThrow();
+        category = categoryDAO.save( category );
         device.setCategory( category );
         DeviceDAO deviceDao = ctx.getBean(DeviceDAO.class);
-        device = deviceDao.save( device ).orElseThrow();*/
-
+        deviceDao.save( device );
     }
 }

@@ -17,7 +17,7 @@ public class RentService {
     public Device rentDevice(Device device, Customer customer) {
         // powiązanie urządzenia z użytkownikiem = "wypożyczenie"
         device.addCustomer( customer );
-        return deviceDAO.update( device ).orElseThrow();
+        return deviceDAO.save( device );
     }
 
 }

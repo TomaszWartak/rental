@@ -9,15 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-//@SpringJUnitConfig
-//@ExtendWith(SpringExtension.class)
-@SpringBootTest/*(classes = RentalMySQL.class)*/
-/*@ComponentScan("main.java.org.example.services")*/
-/*@ContextConfiguration( classes= {
-        Category.class,
-        CategoryDAO.class,
-        RentService.class,
-})*/
+@SpringBootTest
 class RentServiceTest {
 
     private Category category;
@@ -34,13 +26,6 @@ class RentServiceTest {
     @Autowired
     private RentService rentService;
 
-//    public RentServiceTest( CategoryDAO categoryDAO, CustomerDAO customerDAO, DeviceDAO deviceDAO, RentService rentService ) {
-//        this.categoryDAO = categoryDAO;
-//        this.customerDAO = customerDAO;
-//        this.deviceDAO = deviceDAO;
-//        this.rentService = rentService;
-//    }
-
     @Test
     void rentDevice__should_register_the_rental() {
         /* GIVEN */
@@ -56,7 +41,7 @@ class RentServiceTest {
 
         /* THEN */
         // sprawdzenie, czy "wypożyczenie" jest zarejestrowane w bd
-        Device deviceFromDB = deviceDAO.read( device.getId() ).orElseThrow();
+        Device deviceFromDB = deviceDAO.findById( device.getId() ).orElseThrow();
         Assertions.assertThat( deviceFromDB.getId() ).isEqualTo( device.getId() );
         Assertions.assertThat( deviceFromDB.getDescription() ).isEqualTo( device.getDescription() );
         Assertions.assertThat( deviceFromDB.getAvailability() ).isEqualTo( device.getAvailability() );
@@ -87,7 +72,7 @@ class RentServiceTest {
 
     private void saveCategoryDeviceAndCustomer() {
         categoryDAO.save( category );
-        device = deviceDAO.save( device ).orElseThrow();
-        customer = customerDAO.save( customer ).orElseThrow();
+        device = deviceDAO.save( device )/* TODO .orElseThrow()*/;
+        customer = customerDAO.save( customer )/*TODO .orElseThrow()*/;
     }
 }
