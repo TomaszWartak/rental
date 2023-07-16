@@ -26,7 +26,7 @@ public class Device {
     @JoinColumn(name="category_id")
     private Category category;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "device_customers",
             joinColumns = { @JoinColumn(name="device_id", referencedColumnName="id" )},

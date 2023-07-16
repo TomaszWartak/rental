@@ -62,7 +62,7 @@ class RentServiceTest {
         Assertions.assertThat( deviceFromDB.getAvailability() ).isEqualTo( device.getAvailability() );
         Assertions.assertThat( deviceFromDB.getPrice() ).isEqualTo( device.getPrice() );
         Assertions.assertThat( deviceFromDB.getCategory().getId() ).isEqualTo( device.getCategory().getId() );
-        Assertions.assertThat( deviceFromDB.getCustomers().get(1).getId() ).isEqualTo( device.getCustomers().get(1).getId() );
+        Assertions.assertThat( deviceFromDB.getCustomers().get(0).getId() ).isEqualTo( device.getCustomers().get(0).getId() );
     }
 
     private void prepareCategoryDeviceAndCustomer() {
