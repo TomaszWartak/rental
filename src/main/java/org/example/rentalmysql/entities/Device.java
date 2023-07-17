@@ -26,6 +26,7 @@ public class Device {
     @JoinColumn(name="category_id")
     private Category category;
 
+/*
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "device_customers",
@@ -33,6 +34,12 @@ public class Device {
             inverseJoinColumns = { @JoinColumn(name="customer_id", referencedColumnName="id" )}
     )
     private List<Customer> customers = new ArrayList<>();
+
+*/
+    @OneToMany/* todo (mappedBy = "deviceId")*/
+    @JoinColumn(name = "deviceId")
+    private List<Rent> rents = new ArrayList<>();
+
 
     public Long getId() {
         return id;
@@ -81,7 +88,7 @@ public class Device {
     public void setCategory(Category category) {
         this.category = category;
     }
-
+/* TODO
     public List<Customer> getCustomers() {
         return customers;
     }
@@ -92,6 +99,14 @@ public class Device {
 
     public void addCustomer( Customer customer ) {
         customers.add( customer );
+    }*/
+
+    public List<Rent> getRents() {
+        return rents;
+    }
+
+    public void setRents(List<Rent> rents) {
+        this.rents = rents;
     }
 
     @Override

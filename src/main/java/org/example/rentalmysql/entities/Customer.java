@@ -20,8 +20,12 @@ public class Customer {
 
     private String idCardNumber;
 
-    @ManyToMany(mappedBy = "customers")
-    private List<Device> rentDevices = new ArrayList<>();
+//   TODO @ManyToMany(mappedBy = "customers")
+//    private List<Device> rentDevices = new ArrayList<>();
+
+    @OneToMany/* todo (mappedBy = "customerId")*/
+    @JoinColumn(name = "customerId")
+    private List<Rent> rents = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -63,12 +67,21 @@ public class Customer {
         this.idCardNumber = idCardNumber;
     }
 
-    public List<Device> getRentDevices() {
+/* TODO   public List<Device> getRentDevices() {
         return rentDevices;
     }
 
     public void setRentDevices(List<Device> rentDevices) {
         this.rentDevices = rentDevices;
+    }
+*/
+
+    public List<Rent> getRents() {
+        return rents;
+    }
+
+    public void setRents(List<Rent> rents) {
+        this.rents = rents;
     }
 
     @Override
