@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class RentalMySQL {
 
+    ZRÓB ZASILENIE DAMYMI SQL z MOCKAROO
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(RentalMySQL.class, args);
         Category category = new CategoryBuilder()
