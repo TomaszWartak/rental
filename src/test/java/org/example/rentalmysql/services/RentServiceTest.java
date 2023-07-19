@@ -147,5 +147,4 @@ class RentServiceTest {
         device = deviceDAO.save( device );
         customer = customerDAO.save( customer );
     }
-
 }
