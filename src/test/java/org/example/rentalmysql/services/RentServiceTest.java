@@ -122,6 +122,8 @@ class RentServiceTest {
         Device receptedDevice = deviceDAO.findById( recepted.getDeviceId() ).orElseThrow();
         Assertions.assertThat( receptedDevice.getAvailability() ).isEqualTo( rentedDevice.getAvailability()+1 );
     }
+
+
     private void prepareCategoryDeviceAndCustomer() {
         category = new CategoryBuilder()
                 .withName("wiertarki")

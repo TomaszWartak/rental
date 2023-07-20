@@ -7,7 +7,10 @@ import org.example.rentalmysql.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 public class RentService {
@@ -43,7 +46,15 @@ public class RentService {
         return rent;
     }
 
-    public List<Device> getAvailableDevicesInCategory(Category category) {
-        return null;
+    public List<Device> getAllDevicesInCategory(Category category) {
+        return deviceDAO.findDevicesByCategory( category.getId() );
     }
+
+    public List<Device> getAllDevices() {
+        Iterable<Device> devices = deviceDAO.findAll();
+        return StreamSupport.stream(devices.spliterator(), false)
+                .collect(Collectors.toList());
+    }
+
+
 }
