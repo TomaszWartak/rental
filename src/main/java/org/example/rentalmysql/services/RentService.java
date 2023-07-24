@@ -1,31 +1,28 @@
 package org.example.rentalmysql.services;
 
 import jakarta.transaction.Transactional;
-import org.example.rentalmysql.dao.DeviceDAO;
 import org.example.rentalmysql.dao.RentDAO;
 import org.example.rentalmysql.entities.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class RentService {
 
-    @Autowired
-    private DeviceDAO deviceDAO;
-
-    @Autowired
+    private DeviceService deviceService;
     private RentDAO rentDAO;
+
+    public RentService(DeviceService deviceService, RentDAO rentDAO) {
+        this.deviceService = deviceService;
+        this.rentDAO = rentDAO;
+    }
 
     @Transactional
     public Rent rentDevice(Device device, Customer customer) {
         // powiązanie urządzenia z użytkownikiem = "wypożyczenie"
         device.setAvailability( device.getAvailability()-1 );
-        deviceDAO.save( device );
+        deviceService.updateDevice( device );
         Rent rent = new RentBuilder()
                 .withDevice( device )
                 .withCustomer( customer )
@@ -37,24 +34,22 @@ public class RentService {
     @Transactional
     public Rent receptRentalDevice( Device device ) {
         device.setAvailability( device.getAvailability()+1 );
-        deviceDAO.save( device );
+        deviceService.updateDevice( device );
         List<Rent> rents = rentDAO.findAllByFinishedIsFalseAndDeviceId( device.getId() );
         // TODO Lipa jeśli jest więcej niż jedno...
         Rent rent = rents.get(0);
         rent.setFinished( true );
-        rentDAO.save( rent );
-        return rent;
+        return rentDAO.save( rent );
     }
 
-    public List<Device> getAllDevicesInCategory(Category category) {
-        return deviceDAO.findDevicesByCategory( category.getId() );
+    public boolean isDeviceAvilable(Device device ) {
+        Device foundDevice = deviceService.getDeviceWithId( device.getId() ).orElse( null );
+        return
+            (foundDevice!=null) &&
+            rentDAO.findAllByFinishedIsFalseAndDeviceId( device.getId() ).isEmpty();
     }
 
-    public List<Device> getAllDevices() {
-        Iterable<Device> devices = deviceDAO.findAll();
-        return StreamSupport.stream(devices.spliterator(), false)
-                .collect(Collectors.toList());
+    public boolean isDeviceRented(Device device ) {
+        return !rentDAO.findAllByFinishedIsFalseAndDeviceId( device.getId() ).isEmpty();
     }
-
-
 }

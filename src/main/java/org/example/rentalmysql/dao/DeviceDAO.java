@@ -11,6 +11,6 @@ import java.util.Optional;
 public interface DeviceDAO  extends CrudRepository< Device, Long > {
     Optional<Device> findByName( String name );
 
-    List<Device> findDevicesByCategory( Long categoryId );
+    List<Device> findDevicesByCategoryId( Long categoryId );
 
 }

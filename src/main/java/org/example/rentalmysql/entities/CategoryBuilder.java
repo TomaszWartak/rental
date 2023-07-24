@@ -1,5 +1,7 @@
 package org.example.rentalmysql.entities;
 
+import org.example.rentalmysql.dtos.NewCategorySaveDTO;
+
 public class CategoryBuilder {
     private Long id;
     private String name;
@@ -27,4 +29,12 @@ public class CategoryBuilder {
         category.setDescription(description);
         return category;
     }
+
+    public Category buildFromDTO( NewCategorySaveDTO newCategorySaveDTO ) {
+        Category category = new Category();
+        category.setName( newCategorySaveDTO.getName() );
+        category.setDescription( newCategorySaveDTO.getDescription() );
+        return category;
+    }
+
 }
