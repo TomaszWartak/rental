@@ -132,7 +132,8 @@ public class RentalController {
         } else {
             messageDisplayer.show("Brak urządzeń...");
         }
-        messageDisplayer.makeCRLF();    }
+        messageDisplayer.makeCRLF();
+    }
 
     private void addCategory() {
         messageDisplayer.show("DODAJ KATEGORIĘ" );
@@ -227,6 +228,7 @@ public class RentalController {
         }
         messageDisplayer.makeCRLF();
     }
+
     private void rentDevice() {
         messageDisplayer.show("WYPOŻYCZENIE URZĄDZENIA");
 
@@ -245,7 +247,7 @@ public class RentalController {
             messageDisplayer.show("W systemie nie ma urządzenia o takim id");
             return;
         }
-        
+
         if (rentService.isDeviceRented( device )) {
             messageDisplayer.show("Urządzenie jest już wypożyczone");
             return;
